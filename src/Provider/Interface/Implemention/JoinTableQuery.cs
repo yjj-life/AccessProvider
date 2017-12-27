@@ -18,38 +18,38 @@ namespace Provider.Interface.Implemention
 		{
 		}
 
-		private void Join<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate, JOINTYPE type)
-		{
-			try
-			{
-				var result = _translateQuery.Translate(predicate, ClauseType.Join);
-				TableSchema tableSchema = TableSchemaResolver.GetTableSchema(typeof(TSecondary));
-				_sqlBuilder.Join(tableSchema.PrimaryTable, result.CommandText, type);
-			}
-			catch(Exception e)
-			{
-				this._dbError.Code = ErrorCode.InvalidOperation;
-				this._dbError.Text = e.Message;
-			}
-		}
+		//private void Join<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate, JOINTYPE type)
+		//{
+		//	try
+		//	{
+		//		var result = _translateQuery.Translate(predicate, ClauseType.Join);
+		//		TableSchema tableSchema = TableSchemaResolver.GetTableSchema(typeof(TSecondary));
+		//		_sqlBuilder.Join(tableSchema.PrimaryTable, result.CommandText, type);
+		//	}
+		//	catch(Exception e)
+		//	{
+		//		this._dbError.Code = ErrorCode.InvalidOperation;
+		//		this._dbError.Text = e.Message;
+		//	}
+		//}
 
-		public IQueryJoinable<TTable> Join<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate)
-		{
-			this.Join(predicate, JOINTYPE.INNER);
-			return this;
-		}
+		//public IQueryJoinable<TTable> Join<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate)
+		//{
+		//	this.Join(predicate, JOINTYPE.INNER);
+		//	return this;
+		//}
 
-		public IQueryJoinable<TTable> LeftJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate)
-		{
-			this.Join(predicate, JOINTYPE.LEFT);
-			return this;
-		}
+		//public IQueryJoinable<TTable> LeftJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate)
+		//{
+		//	this.Join(predicate, JOINTYPE.LEFT);
+		//	return this;
+		//}
 
-		public IQueryJoinable<TTable> RightJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate)
-		{
-			this.Join(predicate, JOINTYPE.RIGHT);
-			return this;
-		}
+		//public IQueryJoinable<TTable> RightJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate)
+		//{
+		//	this.Join(predicate, JOINTYPE.RIGHT);
+		//	return this;
+		//}
 
 		protected override string TranslateToNativeColumn(string commandText)
 		{
@@ -65,6 +65,22 @@ namespace Provider.Interface.Implemention
 			}
 
 			return commandText;
+		}
+
+		protected override void Join(TableSchema tableSchema)
+		{
+			if (tableSchema.JoinInfos == null || tableSchema.JoinInfos.Count == 0)
+			{
+				return;
+			}
+			var keys = tableSchema.JoinInfos.Keys.ToList();
+			keys.ForEach(key =>
+			{
+				var info = tableSchema.JoinInfos[key];
+				var items = info.JoinItems.Select(item => item.ToString());
+
+				_sqlBuilder.Join(key, string.Join(" And ", items), info.JoinType);
+			});
 		}
 
 		public IQueryJoinable<TTable> Where<TJoiner>(Expression<Func<TJoiner, bool>> predicate)

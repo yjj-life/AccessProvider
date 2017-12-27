@@ -92,6 +92,8 @@ namespace Provider.Interface.Implemention
 				}
 			}
 
+			this.Join(tableSchema);
+
 			_recordsCache = _excuteQuery.Excute<TTable>(_sqlBuilder.Query(), _parameters, _fieldsUsable);
 
 			if (_recordsCache == null)
@@ -178,6 +180,10 @@ namespace Provider.Interface.Implemention
 		protected virtual string TranslateToNativeColumn(string commandText)
 		{
 			return commandText;
+		}
+
+		protected virtual void Join(TableSchema tableSchema)
+		{
 		}
 
 		private void Where(TranslateResult result, Concatenate concatenate)

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Provider.Schema.Attributes;
+
 namespace Provider.Sql
 {
 	internal enum ClauseType
@@ -32,12 +34,12 @@ namespace Provider.Sql
 		ASC,
 		DESC
 	}
-	internal enum JOINTYPE
-	{
-		INNER,
-		LEFT,
-		RIGHT
-	}
+	//internal enum JOINTYPE
+	//{
+	//	INNER,
+	//	LEFT,
+	//	RIGHT
+	//}
 
 	internal enum Concatenate
 	{
@@ -114,9 +116,9 @@ namespace Provider.Sql
 			AppenSqlText(ClauseType.OrderBy, text);
 		}
 
-		internal void Join(string joinerTable, string commandText, JOINTYPE type)
+		internal void Join(string joinerTable, string commandText, JoinType type)
 		{
-			string text = string.Format("{0} JOIN {1} ON {2}", Enum.GetName(typeof(JOINTYPE), type), joinerTable, commandText);
+			string text = string.Format("{0} JOIN {1} ON {2}", Enum.GetName(typeof(JoinType), type), joinerTable, commandText);
 			AppenSqlText(ClauseType.Join, text);
 		}
 

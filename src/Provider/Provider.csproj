@@ -48,7 +48,9 @@
     <Compile Include="Interface\IQueryJoinable.cs" />
     <Compile Include="Interface\IUpdatable.cs" />
     <Compile Include="Interface\Implemention\JoinTableQuery.cs" />
-    <Compile Include="Schema\Attributes.cs" />
+    <Compile Include="Schema\Attributes\ColumnAttribute.cs" />
+    <Compile Include="Schema\Attributes\JoinerAttribute.cs" />
+    <Compile Include="Schema\Attributes\TableAttribute.cs" />
     <Compile Include="Schema\TableSchema.cs" />
     <Compile Include="Sql\ParameterBuilder.cs" />
     <Compile Include="Sql\SqlBuilder.cs" />

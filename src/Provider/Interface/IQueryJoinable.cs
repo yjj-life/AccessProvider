@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Provider.Interface
 {
-	public interface IQueryJoinable<TTable>
+	public interface IQueryJoinable<TTable> : ITableQuery<TTable>
 	{
-		IQueryJoinable<TTable> Join<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate);
-		IQueryJoinable<TTable> LeftJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate);
-		IQueryJoinable<TTable> RightJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate);
+		//IQueryJoinable<TTable> Join<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate);
+		//IQueryJoinable<TTable> LeftJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate);
+		//IQueryJoinable<TTable> RightJoin<TPrimary, TSecondary>(Expression<Func<TPrimary, TSecondary, bool>> predicate);
 
 		IQueryJoinable<TTable> Where<TJoiner>(Expression<Func<TJoiner, bool>> predicate);
 		IQueryJoinable<TTable> WhereAnd<TJoiner>(Expression<Func<TJoiner, bool>> predicate);

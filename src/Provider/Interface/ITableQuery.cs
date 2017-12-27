@@ -25,6 +25,6 @@ namespace Provider.Interface
 		ITableQuery<TTable> Skip();
 		ITableQuery<TTable> Skip<TKey>(Expression<Func<TTable, TKey>> predicate);
 
-		List<TTable> Select(int count);
+		List<TTable> Select(int count = -1);
 	}
 }
