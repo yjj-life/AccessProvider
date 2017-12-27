@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF16DC8A-0E1A-46B5-90E6-BF7EDCC4101A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderTest", "tests\ProviderTest\ProviderTest.csproj", "{3C1109D2-48CB-4C6E-9E8E-DA1E29408552}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C0ED73CD-9869-4238-8321-0EC4F26B8B5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provider", "src\Provider\Provider.csproj", "{987523D7-F98D-422E-A777-4938B5FFBA90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C1109D2-48CB-4C6E-9E8E-DA1E29408552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C1109D2-48CB-4C6E-9E8E-DA1E29408552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C1109D2-48CB-4C6E-9E8E-DA1E29408552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C1109D2-48CB-4C6E-9E8E-DA1E29408552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{987523D7-F98D-422E-A777-4938B5FFBA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{987523D7-F98D-422E-A777-4938B5FFBA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{987523D7-F98D-422E-A777-4938B5FFBA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{987523D7-F98D-422E-A777-4938B5FFBA90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C1109D2-48CB-4C6E-9E8E-DA1E29408552} = {C0ED73CD-9869-4238-8321-0EC4F26B8B5F}
+		{987523D7-F98D-422E-A777-4938B5FFBA90} = {AF16DC8A-0E1A-46B5-90E6-BF7EDCC4101A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B1B2DDC-B517-4986-AC92-F7F9E7215CFC}
+	EndGlobalSection
+EndGlobal
